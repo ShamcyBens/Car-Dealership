@@ -1,0 +1,64 @@
+{% extends 'car/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="jumbotron text-center">
+        <h1 class="display-4">
+            <span id="animated-text"></span>
+        </h1>
+        <p class="lead">Explore our amazing collection of cars 😊.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Get Started</a>
+    </div>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{% static 'car-images/car-banner2.jpg' %}" class="img-fluid rounded" alt="Car Banner">
+            </div>
+            <div class="col-md-6">
+                <h2>Find Your Dream Car</h2>
+                <p>Discover a variety of vehicles that match your preferences and budget. Whether you're looking for a sleek sedan, a powerful SUV, or an efficient hybrid, we have the perfect option for you.</p>
+                <a href="#cars-section" class="btn btn-primary btn-lg">Explore Our Cars</a>
+            </div>
+        </div>
+    </div>
+
+    <section id="stats-section" class="bg-light py-5">
+        <div class="container text-center">
+            <h2 class="mb-4">Our Statistics</h2>
+            <div class="row">
+                <div class="col-md-4 shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 50%;" >
+                    <h3>100+</h3>
+                    <p>Cars in Stock</p>
+                </div>
+                <div class="col-md-4 shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 50%;">
+                    <h3>5,000+</h3>
+                    <p>Satisfied Customers</p>
+                </div>
+                <div class="col-md-4 shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 50%;">
+                    <h3>98%</h3>
+                    <p>Customer Satisfaction Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cars-section" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Featured Cars</h2>
+            <div class="row">
+                {% for car in cars %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ car.car_photo.url }}" class="card-img-top" alt="{{ car.car_title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ car.car_title }}</h5>
+                            <p class="card-text">{{ car.make_year }} - {{ car.expected_selling_price }}</p>
+                            <a href="#" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

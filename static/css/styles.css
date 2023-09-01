@@ -1,0 +1,71 @@
+h1{
+    color: green;
+}
+
+body{
+    background:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnZKtGQqY75XrTj5n7zL6Wfs-W7nczR-2n8A&usqp=CAU")
+    no repear
+   
+}
+/* styles.css */
+
+.card {
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #007BFF;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+/* styles.css */
+
+/* Ensure the body takes up the full height of the viewport */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Adjust the main content area to take up remaining vertical space */
+.container {
+    flex: 1;
+}
+
+
+
+/* Define the initial state of the animated element */
+.animated-element {
+    opacity: 0;
+    transform: translateY(20px); /* You can adjust the value based on the desired effect */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Define the animated state of the element when it's in view */
+.animated-element.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+

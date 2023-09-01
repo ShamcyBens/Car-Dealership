@@ -1,0 +1,17 @@
+<!-- car_detail.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <img src="{% static 'car-images/' %}{{ car.car_photo }}" class="card-img-top" alt="{{ car.make }} {{ car.model }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ car.make }} {{ car.model }}</h5>
+            <p class="card-text">Year: {{ car.make_year }}</p>
+            <p class="card-text">Price: {{ car.expected_selling_price }}</p>
+            <p class="card-text">Transmission: {{ car.get_transmission_type_display }}</p>
+            <!-- Include other car details -->
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'car/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    Create Car
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="{{ form.car_manufacturer.id_for_label }}">Car Manufacturer</label>
+                            {{ form.car_manufacturer }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.car_model.id_for_label }}">Car Model</label>
+                            {{ form.car_model }}
+                        </div>
+                        <!-- Include other fields here -->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Create Car</button>
+                        </div>
+                    </form>
+                    {% if car_created %}
+                    <div class="alert alert-success mt-4">
+                        Car added successfully!
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
