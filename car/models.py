@@ -155,7 +155,7 @@ class Car(models.Model):
     registration_number = models.CharField( max_length=30, blank=True, null = True )
     car_description = models.TextField(blank=True, null = True )
     car_post_date = models.DateField(default=datetime.now)
-    car_photo = models.ImageField(upload_to='media/car_images/', blank=True, null = True )
+    car_photo = models.ImageField(upload_to='car-images/', default="car-images/default.jpeg", blank=True, null = True )
     car_status = models.CharField(max_length=25, choices=car_status_options, default= 'active')
     vehicle_type = models.CharField(max_length=25, choices=vehicle_type_choices, default= 'Car')
 

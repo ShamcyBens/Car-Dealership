@@ -57,19 +57,32 @@ def user_logout(request):
 
     return redirect('user_logout')
 
-
-
 def create_car(request):
     if request.method == 'POST':
-        form = CarForm(request.POST, request.FILES)
+        form = CarForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'You have successfully added the car.')
             return redirect('home')
     else:
-        form = CarForm()
-    
-    return render(request, 'create_car.html', {'form': form})
+        form = CarForm()    
+    return render(request, 'car/create_car.html', {'form': form})
+
+
+def update_car(request, car_id):
+    car = get_object_or_404(Car, id=car_id)
+
+    if request.method == 'POST':
+        form = CarForm(request.POST, instance=car)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Car information has been updated.')
+            return redirect('home')
+    else:
+        form = CarForm(instance=car)
+
+    return render(request, 'car/update_car.html', {'form': form, 'car': car})
+
 
 def car_detail(request, car_id):
     car = get_object_or_404(Car, id=car_id)
@@ -89,3 +102,10 @@ def update_profile(request):
         form = UserProfileForm(instance=user_profile)
     
     return render(request, 'car/update_profile.html', {'form': form})
+
+
+def car_delete_profile(request, car_id):
+    car = Car.objects.get(id=car_id)
+    car.delete()
+    messages.success(request, f'Successfully deleted your car, {request.user.username}.')
+    return redirect('home')
